@@ -13,6 +13,8 @@
 		F79DFD2B204FBD26000064D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F79DFD2A204FBD26000064D9 /* Assets.xcassets */; };
 		F79DFD2E204FBD26000064D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F79DFD2C204FBD26000064D9 /* LaunchScreen.storyboard */; };
 		F79DFD31204FBD26000064D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F79DFD30204FBD26000064D9 /* main.m */; };
+		F79DFD3C204FC252000064D9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F79DFD3B204FC252000064D9 /* AVFoundation.framework */; };
+		F79DFD45204FC42C000064D9 /* TZAVCaptureSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F79DFD44204FC42C000064D9 /* TZAVCaptureSession.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		F79DFD2D204FBD26000064D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F79DFD2F204FBD26000064D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F79DFD30204FBD26000064D9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F79DFD3B204FC252000064D9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F79DFD43204FC42C000064D9 /* TZAVCaptureSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZAVCaptureSession.h; sourceTree = "<group>"; };
+		F79DFD44204FC42C000064D9 /* TZAVCaptureSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZAVCaptureSession.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F79DFD3C204FC252000064D9 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +50,7 @@
 			children = (
 				F79DFD20204FBD26000064D9 /* FacialDetection */,
 				F79DFD1F204FBD26000064D9 /* Products */,
+				F79DFD3A204FC252000064D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +65,8 @@
 		F79DFD20204FBD26000064D9 /* FacialDetection */ = {
 			isa = PBXGroup;
 			children = (
+				F79DFD43204FC42C000064D9 /* TZAVCaptureSession.h */,
+				F79DFD44204FC42C000064D9 /* TZAVCaptureSession.m */,
 				F79DFD21204FBD26000064D9 /* AppDelegate.h */,
 				F79DFD22204FBD26000064D9 /* AppDelegate.m */,
 				F79DFD24204FBD26000064D9 /* ViewController.h */,
@@ -69,6 +78,14 @@
 				F79DFD30204FBD26000064D9 /* main.m */,
 			);
 			path = FacialDetection;
+			sourceTree = "<group>";
+		};
+		F79DFD3A204FC252000064D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F79DFD3B204FC252000064D9 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,6 +114,7 @@
 		F79DFD16204FBD26000064D9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = TZ;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = TZ;
 				TargetAttributes = {
@@ -142,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F79DFD45204FC42C000064D9 /* TZAVCaptureSession.m in Sources */,
 				F79DFD26204FBD26000064D9 /* ViewController.m in Sources */,
 				F79DFD31204FBD26000064D9 /* main.m in Sources */,
 				F79DFD23204FBD26000064D9 /* AppDelegate.m in Sources */,
@@ -279,9 +298,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R3HPTL42C5;
 				INFOPLIST_FILE = FacialDetection/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TZ.FacialDetection;
+				PRODUCT_BUNDLE_IDENTIFIER = com.;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -292,9 +313,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R3HPTL42C5;
 				INFOPLIST_FILE = FacialDetection/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TZ.FacialDetection;
+				PRODUCT_BUNDLE_IDENTIFIER = com.;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

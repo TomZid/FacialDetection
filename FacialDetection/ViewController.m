@@ -7,23 +7,29 @@
 //
 
 #import "ViewController.h"
+#import "TZAVCaptureSession.h"
 
-@interface ViewController ()
+@interface ViewController () <AVCaptureSessionDelegate>
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UIView *mainView;
+@property (weak, nonatomic) IBOutlet UIImageView *detailView;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end
 
 @implementation ViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [TZAVCaptureSession share].delegate_ = self;
+    [self.mainView.layer addSublayer:[[TZAVCaptureSession share] layer]];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - AVCaptureSessionDelegate
+- (void)imageFromSampleBuffer:(UIImage *(^)(void))handle {
+    UIImage *image = handle();
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.detailView.image = image;
+    });
 }
-
 
 @end

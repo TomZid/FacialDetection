@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,78 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mou-E2-n50">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_bg_img" translatesAutoresizingMaskIntoConstraints="NO" id="PKC-IT-ijU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PKC-IT-ijU" secondAttribute="height" multiplier="1:1" id="761-qt-5Hh"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeF-6f-2LM">
+                                <rect key="frame" x="0.0" y="375" width="156" height="292"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7pG-MC-1pj">
+                                <rect key="frame" x="20" y="20" width="223" height="29"/>
+                                <segments>
+                                    <segment title="shake"/>
+                                    <segment title="nod"/>
+                                    <segment title="mouse"/>
+                                    <segment title="eye"/>
+                                </segments>
+                            </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3WC-un-Boj">
+                                <rect key="frame" x="156" y="375" width="219" height="292"/>
+                                <color key="backgroundColor" red="0.85421954314720816" green="0.85421954314720816" blue="0.85421954314720816" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3WC-un-Boj" secondAttribute="height" multiplier="3:4" id="1jh-TK-vmV"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3WC-un-Boj" firstAttribute="leading" secondItem="AeF-6f-2LM" secondAttribute="trailing" id="30L-rj-eWS"/>
+                            <constraint firstItem="3WC-un-Boj" firstAttribute="top" secondItem="Mou-E2-n50" secondAttribute="bottom" id="HU2-xe-VYL"/>
+                            <constraint firstItem="7pG-MC-1pj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="LHn-34-pjf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3WC-un-Boj" secondAttribute="bottom" id="MT5-8u-nTS"/>
+                            <constraint firstItem="Mou-E2-n50" firstAttribute="height" secondItem="PKC-IT-ijU" secondAttribute="height" id="Mf7-ec-3hE"/>
+                            <constraint firstItem="7pG-MC-1pj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="P5a-EM-AJG"/>
+                            <constraint firstItem="PKC-IT-ijU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Q4a-7N-CWb"/>
+                            <constraint firstItem="Mou-E2-n50" firstAttribute="width" secondItem="PKC-IT-ijU" secondAttribute="width" id="SDL-0o-0EK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AeF-6f-2LM" secondAttribute="bottom" id="bqS-s1-Pzm"/>
+                            <constraint firstItem="AeF-6f-2LM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="e26-y9-OEm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="PKC-IT-ijU" secondAttribute="top" constant="20" id="gwb-dx-gDN"/>
+                            <constraint firstItem="Mou-E2-n50" firstAttribute="centerX" secondItem="PKC-IT-ijU" secondAttribute="centerX" id="kCS-rd-gKV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3WC-un-Boj" secondAttribute="trailing" id="qaf-CD-gjP"/>
+                            <constraint firstItem="AeF-6f-2LM" firstAttribute="top" secondItem="PKC-IT-ijU" secondAttribute="bottom" id="tg2-gu-iV3"/>
+                            <constraint firstItem="Mou-E2-n50" firstAttribute="centerY" secondItem="PKC-IT-ijU" secondAttribute="centerY" id="z3A-vz-vNX"/>
+                            <constraint firstItem="PKC-IT-ijU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zSV-2f-OSm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="detailView" destination="3WC-un-Boj" id="4mZ-yx-gmw"/>
+                        <outlet property="label" destination="AeF-6f-2LM" id="Lh9-Ck-13N"/>
+                        <outlet property="mainView" destination="Mou-E2-n50" id="NHW-WX-eUP"/>
+                        <outlet property="segmentedControl" destination="7pG-MC-1pj" id="Knr-YV-SeK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="header_bg_img" width="360" height="356"/>
+    </resources>
 </document>
