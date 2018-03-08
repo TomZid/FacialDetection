@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F789F4C120511EEC005EB802 /* TZImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F789F4C020511EEC005EB802 /* TZImageView.m */; };
 		F79DFD23204FBD26000064D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F79DFD22204FBD26000064D9 /* AppDelegate.m */; };
 		F79DFD26204FBD26000064D9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79DFD25204FBD26000064D9 /* ViewController.m */; };
 		F79DFD29204FBD26000064D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F79DFD27204FBD26000064D9 /* Main.storyboard */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F789F4BF20511EEC005EB802 /* TZImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZImageView.h; sourceTree = "<group>"; };
+		F789F4C020511EEC005EB802 /* TZImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZImageView.m; sourceTree = "<group>"; };
 		F79DFD1E204FBD26000064D9 /* FacialDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FacialDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F79DFD21204FBD26000064D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F79DFD22204FBD26000064D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -48,6 +51,8 @@
 		F79DFD15204FBD26000064D9 = {
 			isa = PBXGroup;
 			children = (
+				F789F4BF20511EEC005EB802 /* TZImageView.h */,
+				F789F4C020511EEC005EB802 /* TZImageView.m */,
 				F79DFD20204FBD26000064D9 /* FacialDetection */,
 				F79DFD1F204FBD26000064D9 /* Products */,
 				F79DFD3A204FC252000064D9 /* Frameworks */,
@@ -163,6 +168,7 @@
 				F79DFD45204FC42C000064D9 /* TZAVCaptureSession.m in Sources */,
 				F79DFD26204FBD26000064D9 /* ViewController.m in Sources */,
 				F79DFD31204FBD26000064D9 /* main.m in Sources */,
+				F789F4C120511EEC005EB802 /* TZImageView.m in Sources */,
 				F79DFD23204FBD26000064D9 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
