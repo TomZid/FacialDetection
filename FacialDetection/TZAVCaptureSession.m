@@ -38,23 +38,25 @@ static TZAVCaptureSession *a = nil;
 
 - (void)initialSession {
     _captureSession = [[AVCaptureSession alloc] init];
-    AVCaptureDevice *videoCaptureDevice = ({
-        [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-        for (AVCaptureDevice *cam in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
-            if (cam.position == AVCaptureDevicePositionFront)
-                videoCaptureDevice = cam;
-        }
-        videoCaptureDevice;
-    });
     {
         _captureSession.sessionPreset = AVCaptureSessionPreset640x480;
     }
+    AVCaptureDevice *videoCaptureDevice = ({
+        [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        AVCaptureDevice *v = nil;
+        AVCaptureDeviceDiscoverySession *deviceSession = [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:@[AVCaptureDeviceTypeBuiltInWideAngleCamera] mediaType:AVMediaTypeVideo position:AVCaptureDevicePositionFront];
+        for (AVCaptureDevice *cam in deviceSession.devices) {
+            if (cam.position == AVCaptureDevicePositionFront)
+                v = cam;
+        }
+        v;
+    });
     NSError *error = nil;
 
     //input
-    AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:videoCaptureDevice error:&error];
-    if (audioInput) {
-        [_captureSession addInput:audioInput];
+    AVCaptureDeviceInput *videoInput = [AVCaptureDeviceInput deviceInputWithDevice:videoCaptureDevice error:&error];
+    if (videoInput) {
+        [_captureSession addInput:videoInput];
     }
     else {
         // Handle the failure.
@@ -63,9 +65,63 @@ static TZAVCaptureSession *a = nil;
     dispatch_queue_t _videoQueue = dispatch_queue_create("com.faceDet", NULL);
     //  output
     AVCaptureVideoDataOutput *output = [[AVCaptureVideoDataOutput alloc] init];
+    {
+        AVCaptureConnection *videoCon = [output connectionWithMediaType:AVMediaTypeVideo];
+        if ([videoCon isVideoOrientationSupported]) {
+            videoCon.videoOrientation = AVCaptureVideoOrientationPortrait;
+        }
+    }
     [output setSampleBufferDelegate:self queue:_videoQueue];
     output.videoSettings = @{(id)kCVPixelBufferPixelFormatTypeKey:@(kCVPixelFormatType_32BGRA)};
     output.alwaysDiscardsLateVideoFrames = NO;
+
+    {
+//        AVCaptureDeviceFormat *bestFormat = nil;
+//        AVFrameRateRange *bestFrameRateRange = nil;
+//        for (AVCaptureDeviceFormat *format in [videoCaptureDevice formats]) {
+//            for (AVFrameRateRange *range in format.videoSupportedFrameRateRanges) {
+//                NSLog(@"range.maxFrameRate is: %f", range.maxFrameRate);
+//                if (range.maxFrameRate == 60) {
+//                    bestFormat = format;
+//                    bestFrameRateRange = range;
+//                }
+//            }
+//        }
+//        if (bestFormat) {
+//            NSError *error = nil;
+//            if ([videoCaptureDevice lockForConfiguration:&error]) {
+//                videoCaptureDevice.activeFormat = bestFormat;
+//                videoCaptureDevice.activeVideoMinFrameDuration = CMTimeMake(1, 1);
+//                videoCaptureDevice.activeVideoMaxFrameDuration = CMTimeMake(1, 1);
+//                [videoCaptureDevice unlockForConfiguration];
+//            }
+//        }
+
+        CGFloat desiredFPS = 1.0;
+        AVCaptureDeviceFormat *selectedFormat = nil;
+        int32_t maxWidth = 0;
+        AVFrameRateRange *frameRateRange = nil;
+        for (AVCaptureDeviceFormat *format in [videoCaptureDevice formats]) {
+            for (AVFrameRateRange *range in format.videoSupportedFrameRateRanges) {
+                CMFormatDescriptionRef desc = format.formatDescription;
+                CMVideoDimensions dimensions = CMVideoFormatDescriptionGetDimensions(desc);
+                int32_t width = dimensions.width;
+                if (range.minFrameRate <= desiredFPS && desiredFPS <= range.maxFrameRate && width >= maxWidth) {
+                    selectedFormat = format;
+                    frameRateRange = range;
+                    maxWidth = width;
+                }
+            }
+        }
+        if (selectedFormat) {
+            if ([videoCaptureDevice lockForConfiguration:nil]) {
+                videoCaptureDevice.activeFormat = selectedFormat;
+                videoCaptureDevice.activeVideoMinFrameDuration = CMTimeMake(1, (int32_t)desiredFPS);
+                videoCaptureDevice.activeVideoMaxFrameDuration = CMTimeMake(1, (int32_t)desiredFPS);
+                [videoCaptureDevice unlockForConfiguration];
+            }
+        }
+    }
 
     if ([_captureSession canAddOutput:output]) {
         [_captureSession addOutput:output];

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "TZAVCaptureSession.h"
 #import "TZImageView.h"
+#import "UIImage+resize.h"
 
 @interface ViewController () <AVCaptureSessionDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
@@ -44,6 +45,14 @@
         [self.detailView drawMouseWithRect:CGRectMake(x + 20, y + 70, width + 30, height)];
     });
 
+    UIImage *newImage = [image resizedImage:({
+        CGFloat scale = 2;
+        CGSize s = image.size;
+        s.width /= scale;
+        s.height /= scale;
+        s;
+    }) interpolationQuality:kCGInterpolationDefault];
+    // TODO: 使用newImage作为参数
 
 }
 

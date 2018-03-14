@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F77AC0DA2058B34100C2382F /* UIImage+resize.m in Sources */ = {isa = PBXBuildFile; fileRef = F77AC0D92058B34100C2382F /* UIImage+resize.m */; };
 		F789F4C120511EEC005EB802 /* TZImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F789F4C020511EEC005EB802 /* TZImageView.m */; };
 		F79DFD23204FBD26000064D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F79DFD22204FBD26000064D9 /* AppDelegate.m */; };
 		F79DFD26204FBD26000064D9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79DFD25204FBD26000064D9 /* ViewController.m */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F77AC0D82058B34100C2382F /* UIImage+resize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+resize.h"; sourceTree = "<group>"; };
+		F77AC0D92058B34100C2382F /* UIImage+resize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+resize.m"; sourceTree = "<group>"; };
 		F789F4BF20511EEC005EB802 /* TZImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZImageView.h; sourceTree = "<group>"; };
 		F789F4C020511EEC005EB802 /* TZImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZImageView.m; sourceTree = "<group>"; };
 		F79DFD1E204FBD26000064D9 /* FacialDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FacialDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F77AC0D72058B32100C2382F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				F77AC0D82058B34100C2382F /* UIImage+resize.h */,
+				F77AC0D92058B34100C2382F /* UIImage+resize.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		F79DFD15204FBD26000064D9 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +82,7 @@
 		F79DFD20204FBD26000064D9 /* FacialDetection */ = {
 			isa = PBXGroup;
 			children = (
+				F77AC0D72058B32100C2382F /* Category */,
 				F79DFD43204FC42C000064D9 /* TZAVCaptureSession.h */,
 				F79DFD44204FC42C000064D9 /* TZAVCaptureSession.m */,
 				F79DFD21204FBD26000064D9 /* AppDelegate.h */,
@@ -166,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F79DFD45204FC42C000064D9 /* TZAVCaptureSession.m in Sources */,
+				F77AC0DA2058B34100C2382F /* UIImage+resize.m in Sources */,
 				F79DFD26204FBD26000064D9 /* ViewController.m in Sources */,
 				F79DFD31204FBD26000064D9 /* main.m in Sources */,
 				F789F4C120511EEC005EB802 /* TZImageView.m in Sources */,
